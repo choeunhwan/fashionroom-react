@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 
-class Header_cart extends Component {
+class HeaderCart extends Component {
     render() {
         return (
             <div>
@@ -16,4 +16,4 @@ class Header_cart extends Component {
     }
 }
 
-export default Header_cart;
+export default HeaderCart;

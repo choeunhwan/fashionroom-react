@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Header_cart from './Header_cart'
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import HeaderCart from './HeaderCart'
+import { Navbar, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Fashionroom from './logo_white.svg';
-import Header_search_button from './Header_search_button';
+import HeaderSearchButton from './HeaderSearchButton';
 
-class Header_navbar extends Component {
+class HeaderNavbar extends Component {
     render() {
         return (
             <div>
@@ -34,8 +34,8 @@ class Header_navbar extends Component {
                             </Nav>
                             <Form inline>
                                 <FormControl type="text" placeholder="Buscar..." className="mr-sm-2" />
-                                <Header_search_button />
-                                <Header_cart />
+                                <HeaderSearchButton />
+                                <HeaderCart />
                             </Form>
                         </Navbar.Collapse>
                     </Navbar>
@@ -46,4 +46,4 @@ class Header_navbar extends Component {
     }
 }
 
-export default Header_navbar;
+export default HeaderNavbar;
