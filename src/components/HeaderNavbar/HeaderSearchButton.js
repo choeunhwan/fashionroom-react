@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 
-class Header_search_button extends Component {
+class HeaderSearchButton extends Component {
     render() {
         return (
             <div>
@@ -16,4 +16,4 @@ class Header_search_button extends Component {
     }
 }
 
-export default Header_search_button;
+export default HeaderSearchButton;
