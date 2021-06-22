@@ -1,53 +1,57 @@
-import React, { Component } from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
+import React, { Component, useState } from 'react';
+import { Container, Col, Row, Form, Text } from 'react-bootstrap';
 import './Counter.css';
 
-class Counter extends Component {
+const Counter = () => {
 
-    constructor() {
-        super();
+    const [count, setCount] = React.useState(1);
+    const [message, setMessage] = React.useState("");
 
-        this.state = {
-            count: 1,
-        };
-    }
+    const handleCounterUp = () => {
+        if (count < 10) {
+          setCount(count + 1);
+          setMessage(null);
+        } else {
+          setMessage("Limite de stock 10");
+        }
+      }
+    
+      const handleCounterDown = () => {
+        if (count > 1) {
+          setCount(count - 1);
+          setMessage(null);
+        } else {
+          setMessage("Minima compra 1");
+        }
+      }
+    
 
-    handleCounterUp = () => {
-        this.setState({ count: this.state.count + 1 });
-    };
-
-    handleCounterDown = () => {
-        this.setState({ count: this.state.count - 1 });
-    };
-
-
-    render() {
-        return (
+    return (
             <div>
                 <Container>
                     <Row className="justify-content-md-center">
                         <Col md="0">
-                            <button className='buttonStyle-plus' primary onClick={this.handleCounterUp}>
+                            <button className='buttonStyle-plus' primary onClick={handleCounterUp}>
                                 +
                             </button>
                         </Col>
 
                         <Col md="0">
                             <div className='inputStyle'>
-                                <span>{this.state.count}</span>
+                                <span>{count}</span>
                             </div>
                         </Col>
 
                         <Col md="0">
-                            <button className='buttonStyle-minus' secondary onClick={this.handleCounterDown}>
+                            <button className='buttonStyle-minus' secondary onClick={handleCounterDown}>
                                 -
                             </button>
                         </Col>
                     </Row>
                 </Container>
+                <Form.Text className='text-danger'>{message}</Form.Text>
             </div>
         )
-    }
 }
 
 export default Counter;
