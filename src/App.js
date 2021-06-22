@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import ItemListContainer from './components/ContainerGrid/ItemListContainer/ItemListContainer';
 import HeaderNavbar from './components/HeaderNavbar/HeaderNavbar';
-import ContainerGrid from './components/ContainerGrid/ContainerGrid';
 class App extends Component {
 
   render() {
     return (
       <div className='App'>
         <HeaderNavbar />
-        <ContainerGrid />
+        <ItemListContainer />
       </div>
     );
   }
