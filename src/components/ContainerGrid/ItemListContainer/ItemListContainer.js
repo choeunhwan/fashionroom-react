@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
-import ItemDetailContainer from './ItemDetailContainer/ItemDetailContainer';
+import ItemCard from './ItemCard/ItemCard';
+
+import { Link } from 'react-router-dom';
 
 function ItemListContainer() {
 
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios('https://api.github.com/users').then((res) => setUsers(res.data));}, [])
+        axios('https://api.github.com/users').then((res) => setUsers(res.data));
+    }, []);
 
-        return (
-            <div>
+    return (
+        <div>
 
-                <div>
-                    <h1>ItemListContainer</h1>
-                    <ItemDetailContainer users={users} />
-                </div>
-
+            <div key={users.id}>
+                <Link to={`/details/${users.id}`}></Link>
+                <ItemCard data={users} />
             </div>
-        );
-    }
+
+        </div>
+    );
+}
 
 export default ItemListContainer;
