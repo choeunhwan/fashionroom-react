@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Col, Row } from 'react-bootstrap';
-import ItemListContainer from './ItemListContainer/ItemListContainer';
+import ItemListContainer from '../ItemListContainer';
 
 // import Data de productos
 
-import { itemsList } from './ItemList';
+import { ItemData } from './ItemData';
 
-class ContainerGrid extends Component {
+class ItemList extends Component {
 
     constructor() {
-        console.log("Constructor");
         super();
 
         this.state = {
@@ -20,8 +18,7 @@ class ContainerGrid extends Component {
 
     componentDidMount() {
         setTimeout(() => {
-            console.log("ComponentDidMount");
-            this.setState({ items: itemsList });
+            this.setState({ items: ItemData });
         }, 200);
     }
 
@@ -37,7 +34,6 @@ class ContainerGrid extends Component {
                                     <ItemListContainer
                                         title={item.name}
                                         description={item.category}
-                                        // img={ } alt=''
                                         price={item.price}
                                     />
                                 </Col>
@@ -45,7 +41,6 @@ class ContainerGrid extends Component {
                                     <ItemListContainer
                                         title={item.name}
                                         description={item.category}
-                                        // img={ } alt=''
                                         price={item.price}
                                     />
                                 </Col>
@@ -53,7 +48,6 @@ class ContainerGrid extends Component {
                                     <ItemListContainer
                                         title={item.name}
                                         description={item.category}
-                                        // img={ } alt=''
                                         price={item.price}
                                     />
                                 </Col>
@@ -61,7 +55,6 @@ class ContainerGrid extends Component {
                                     <ItemListContainer
                                         title={item.name}
                                         description={item.category}
-                                        // img={ } alt=''
                                         price={item.price}
                                     />
                                 </Col>
@@ -75,4 +68,4 @@ class ContainerGrid extends Component {
     }
 }
 
-export default ContainerGrid;
+export default ItemList;

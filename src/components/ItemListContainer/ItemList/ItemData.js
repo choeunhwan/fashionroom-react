@@ -1,4 +1,4 @@
-export const itemsList = [
+export const ItemData = [
     { id: 1, name: "Sweater", category: "Sweater", price: 1000 },
     { id: 1, name: "Jeans", category: "Jeans Denim", price: 1200 },
     { id: 1, name: "Calzado", category: "Cuero", price: 2500 },
