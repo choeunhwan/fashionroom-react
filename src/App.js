@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import ItemListContainer from './components/ContainerGrid/ItemListContainer/ItemListContainer';
 import HeaderNavbar from './components/HeaderNavbar/HeaderNavbar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 class App extends Component {
 
   render() {
