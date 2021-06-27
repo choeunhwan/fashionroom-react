@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import { Container, Col, Row, Form, Text } from 'react-bootstrap';
+import React from 'react';
+import { Container, Col, Row, Form } from 'react-bootstrap';
 import './Counter.css';
 
 const Counter = () => {

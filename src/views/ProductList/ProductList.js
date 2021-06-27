@@ -1,4 +1,5 @@
-import ItemListContainer from "../../components/ContainerGrid/ItemListContainer/ItemListContainer";
+import ItemListContainer from "../../components/ItemListContainer/ItemListContainer";
+
 
 function ProductList() {
     return (

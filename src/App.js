@@ -11,7 +11,7 @@ import Home from './views/Home/Home';
 import Contact from './views/Contact/Contact';
 import ProductList from './views/ProductList/ProductList';
 import Cart from './views/Cart/Cart';
-import ProductoDetail from './views/ProductDetail/ProductDetail';
+import ProductDetail from './views/ProductDetail/ProductDetail';
 
 class App extends Component {
 
@@ -27,7 +27,7 @@ class App extends Component {
             <Route path="/about" exact component={Brands} />
             <Route path="/contact" exact component={Contact} />
             <Route path="/cart" exact component={Cart} />
-            <Route path="/productdetail" exact component={ProductoDetail} />
+            <Route path="/productdetail/:id" exact component={ProductDetail} />
           </Switch>
         </div>
       </Router>
