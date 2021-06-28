@@ -1,44 +1,32 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import Counter from '../Counter/Counter';
 
-function ItemDetail({ match }) {
-	let userID = match.params.id;
-	const [users, setUsers] = useState([]);
-	useEffect(() => {
-		axios(`https://api.github.com/users/${userID}`).then((res) =>
-			setUsers(res.data)
-		);
-	}, [userID]);
+const ItemDetail = ({ users }) => {
 
     return (
-        <div>
-            {users.map((user) => {
-                return (
-                    <Card key={user.id}>
-                        <Card.Img variant="top" src={user.avatar_url} />
-                        <Card.Body>
-                            <Card.Title>{user.login}</Card.Title>
-                            <Card.Text>
-                                {user.node_id}
-                            </Card.Text>
-                            <Card.Text>
-                                $ {user.type}
-                            </Card.Text>
-                            <Row>
-                                <Col>
-                                    <Counter />
-                                </Col>
-                                <Col>
-                                    <Button variant="primary">Comprar</Button>
-                                </Col>
-                            </Row>
-                        </Card.Body>
-                    </Card>
-                )
-            })}
-        </div>
+
+        <Card key={users.id}>
+            <Card.Img variant="top" src={users.avatar_url} />
+            <Card.Body>
+                <Card.Title>{users.login}</Card.Title>
+                <Card.Text>
+                    {users.node_id}
+                </Card.Text>
+                <Card.Text>
+                    $ {users.type}
+                </Card.Text>
+                <Row>
+                    <Col>
+                        <Counter />
+                    </Col>
+                    <Col>
+                        <Button variant="primary">Comprar</Button>
+                    </Col>
+                </Row>
+            </Card.Body>
+        </Card>
+        
     )
 }
 
