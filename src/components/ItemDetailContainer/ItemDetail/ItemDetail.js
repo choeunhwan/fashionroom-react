@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import Counter from '../Counter/Counter';
 
-function ItemDetail({ users }) {
+function ItemDetail({ match }) {
+	let userID = match.params.id;
+	const [users, setUsers] = useState([]);
+	useEffect(() => {
+		axios(`https://api.github.com/users/${userID}`).then((res) =>
+			setUsers(res.data)
+		);
+	}, [userID]);
 
     return (
         <div>
