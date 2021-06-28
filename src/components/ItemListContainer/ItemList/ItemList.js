@@ -5,9 +5,7 @@ import Item from './Item/Item';
 
 
 function ItemList() {
-
     const [users, setUsers] = useState([]);
-
     useEffect(() => {
         axios('https://api.github.com/users').then((res) =>
             setUsers(res.data));

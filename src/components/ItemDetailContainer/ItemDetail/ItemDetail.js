@@ -3,9 +3,7 @@ import { Card, Button, Row, Col } from 'react-bootstrap';
 import Counter from '../Counter/Counter';
 
 const ItemDetail = ({ users }) => {
-
     return (
-
         <Card key={users.id}>
             <Card.Img variant="top" src={users.avatar_url} />
             <Card.Body>
@@ -25,8 +23,7 @@ const ItemDetail = ({ users }) => {
                     </Col>
                 </Row>
             </Card.Body>
-        </Card>
-        
+        </Card>       
     )
 }
 

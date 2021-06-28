@@ -3,12 +3,12 @@ import axios from 'axios';
 import { Container } from 'react-bootstrap';
 import ItemDetail from './ItemDetail/ItemDetail.js';
 
-function ItemListContainer() {
+function ItemDetailContainer() {
 
-    const [users, setUsers] = useState([]);
+    const [user, setUsers] = useState([]);
 
 	useEffect(() => {
-		axios('https://api.github.com/users/').then((res) => {
+		axios('https://api.github.com/users').then((res) => {
 			setUsers(res.data);
 		});
 	}, []);
@@ -17,11 +17,10 @@ function ItemListContainer() {
         <div>
             <Container className="mt-4">
                 <h1>Detalle de Item</h1>
-                <ItemDetail users={users}/>
+                <ItemDetail users={user}/>
             </Container>
         </div>
     );
 }
 
-export default ItemListContainer;
-
+export default ItemDetailContainer;
