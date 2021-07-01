@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
-import { Col } from 'react-bootstrap';
+import { Col, Card, Button, Row } from 'react-bootstrap';
+import Counter from '../Item/Counter/Counter';
 
-//detalle de Producto
 class Item extends Component {
     render() {
         return (
             <div>
-                {this.state.items.map((item) => {
+                {this.state.items.map((items) => {
                     <Card style={{ width: '16rem' }}>
                         <Card.Body>
-                            <Card.Title>{item.name}</Card.Title>
+                            <Card.Title>{items.name}</Card.Title>
                             <Card.Text>
-                                {item.category}
+                                {items.category}
                             </Card.Text>
                             <Card.Text>
-                                $ {item.price}
+                                $ {items.price}
                             </Card.Text>
                             <Row>
                                 <Col>

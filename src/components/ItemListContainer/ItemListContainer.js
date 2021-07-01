@@ -1,27 +1,44 @@
-import React from 'react';
-import { Card, Button, Row, Col } from 'react-bootstrap';
-import Counter from './Counter/Counter';
+import React, { Component } from 'react';
+import { Container } from 'react-bootstrap';
+import ItemList from './ItemList/ItemList';
+import { ItemData } from "./ItemList/ItemData";
 
-const ItemListContainer = ({ title, description, price }) => {
+class ItemListContainer extends Component {
 
-    return (
-        <div>
+    constructor() {
+        super();
+        this.state = {
+            items: []
+        };
+    }
 
-            <Card style={{ width: '16rem' }}>
-                <Card.Body>
-                    <Card.Title>{title}</Card.Title>
-                    <Card.Text>
-                        {description}
-                    </Card.Text>
-                    <Card.Text>
-                        $ {price}
-                    </Card.Text>
-                    <Button variant="primary">Ver producto</Button>
-                </Card.Body>
-            </Card>
+    componentDidMount() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({ items: ItemData });
+            }, 2000);
+        });
+    }
 
-        </div>
-    )
+    render() {
+        return (
+            <div>
+                {this.state.items.map((items) => {
+                    <div>
+                        <Container className="mt-4">
+                            <h1>ItemListContainer</h1>
+                            <ItemList
+                                key={items.id}
+                                title={items.name}
+                                description={items.category}
+                                price={items.price}
+                            />
+                        </Container>
+                    </div>
+                })};
+            </div>
+        )
+    }
 }
 
 export default ItemListContainer;
