@@ -1,26 +1,17 @@
-import React, { useState, useEffect }  from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 import ItemDetail from './ItemDetail/ItemDetail.js';
 
-function ItemDetailContainer() {
-
-    const [user, setUsers] = useState([]);
-
-	useEffect(() => {
-		axios('https://api.github.com/users').then((res) => {
-			setUsers(res.data);
-		});
-	}, []);
+const ItemDetailContainer = ({ userData }) => {
 
     return (
         <div>
-            <Container className="mt-4">
-                <h1>Detalle de Item</h1>
-                <ItemDetail users={user}/>
+            <Container>
+                <h1>Detalle de Producto</h1>
+                <ItemDetail userDetail={userData} />
             </Container>
         </div>
-    );
+    )
 }
 
 export default ItemDetailContainer;

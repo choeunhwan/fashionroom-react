@@ -4,17 +4,17 @@ import ItemDetailContainer from '../../components/ItemDetailContainer/ItemDetail
 
 function ProductDetail({ match }) {
     let userID = match.params.id;
-    const [user, setUsers] = useState([]);
+    const [user, setUser] = useState([]);
     useEffect(() => {
         axios(`https://api.github.com/users/${userID}`).then((res) =>
-            setUsers(res.data)
+            setUser(res.data)
         );
     }, [userID]);
     console.log(match)
 
     return (
         <div>
-            <ItemDetailContainer users={user} />
+            <ItemDetailContainer userData={user} />
         </div>
     );
 }

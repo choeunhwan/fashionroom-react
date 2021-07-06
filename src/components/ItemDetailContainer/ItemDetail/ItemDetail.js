@@ -2,17 +2,17 @@ import React from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
 import Counter from '../Counter/Counter';
 
-const ItemDetail = ({ users }) => {
+const ItemDetail = ({ userDetail }) => {
     return (
-        <Card key={users.id}>
-            <Card.Img variant="top" src={users.avatar_url} />
+        <Card key={userDetail.id}>
+            <Card.Img variant="top" src={userDetail.avatar_url} />
             <Card.Body>
-                <Card.Title>{users.login}</Card.Title>
+                <Card.Title>{userDetail.login}</Card.Title>
                 <Card.Text>
-                    {users.node_id}
+                    {userDetail.node_id}
                 </Card.Text>
                 <Card.Text>
-                    $ {users.type}
+                    $ {userDetail.type}
                 </Card.Text>
                 <Row>
                     <Col>
