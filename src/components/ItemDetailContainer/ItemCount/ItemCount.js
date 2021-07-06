@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Col, Row, Form } from 'react-bootstrap';
-import './Counter.css';
+import './ItemCount.css';
 
-const Counter = () => {
+const ItemCount = () => {
 
     const [count, setCount] = React.useState(1);
     const [message, setMessage] = React.useState("");
@@ -54,4 +54,4 @@ const Counter = () => {
         )
 }
 
-export default Counter;
+export default ItemCount;

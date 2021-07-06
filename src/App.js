@@ -14,7 +14,7 @@ import Cart from './views/Cart/Cart';
 import ProductDetail from './views/ProductDetail/ProductDetail';
 
 // Provider
-import { ItemsProvider } from './ItemsContext';
+import { ItemsProvider } from './ItemContext';
 
 function App() {
   return (
