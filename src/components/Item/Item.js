@@ -2,33 +2,30 @@ import React, { Component } from 'react'
 import { Col, Card, Button, Row } from 'react-bootstrap';
 import Counter from '../Item/Counter/Counter';
 
-class Item extends Component {
-    render() {
-        return (
-            <div>
-                {this.state.items.map((items) => {
-                    <Card style={{ width: '16rem' }}>
-                        <Card.Body>
-                            <Card.Title>{items.name}</Card.Title>
-                            <Card.Text>
-                                {items.category}
-                            </Card.Text>
-                            <Card.Text>
-                                $ {items.price}
-                            </Card.Text>
-                            <Row>
-                                <Col>
-                                    <Counter />
-                                </Col>
-                                <Col>
-                                    <Button variant="primary">Agregar</Button>
-                                </Col>
-                            </Row>
-                        </Card.Body>
-                    </Card>
-                })};
-            </div>
-        )
-    }
+const Item = ({ data }) => {
+
+    return (
+        <Card style={{ width: '16rem' }} key={data.id}>
+            <Card.Body>
+                <Card.Title>{data.name}</Card.Title>
+                <Card.Text>
+                    {data.category}
+                </Card.Text>
+                <Card.Text>
+                    $ {data.price}
+                </Card.Text>
+                <Row>
+                    <Col>
+                        <Counter />
+                    </Col>
+                    <Col>
+                        <Button variant="primary">Agregar</Button>
+                    </Col>
+                </Row>
+            </Card.Body>
+        </Card>
+    )
 }
+
+
 export default Item;

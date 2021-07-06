@@ -2,19 +2,14 @@ import React from 'react'
 import { Container, Row } from 'react-bootstrap';
 import Item from '../../Item/Item';
 
-function ItemList(items) {
+const ItemList = ({ item }) => {
 
     return (
         <Container>
-            <Row md={4} key={items.id}>
-                {this.state.map((items) => {
-                    console.log('id', items.id);
-                    return (
-                        <div key={items.id}>
-                            <Item items={items} />
-                        </div>
-                    );
-                })}
+            <Row md={4}>
+                <div key={item.id}>
+                    <Item data={item} />
+                </div>
             </Row>
         </Container>
     );
