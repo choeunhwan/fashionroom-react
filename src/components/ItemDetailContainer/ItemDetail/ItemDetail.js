@@ -1,9 +1,17 @@
-import React from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
-import Agregar from '../Agregar/Agregar';
+import React, { useState, useEffect } from 'react';
+import { Card, Row, Col, Button } from 'react-bootstrap';
+import Cart from '../../../views/Cart/Cart';
+// import Agregar from '../Agregar/Agregar';
 import ItemCount from '../ItemCount/ItemCount';
 
 const ItemDetail = ({ userDetail }) => {
+
+    const [cart, setCart] = useState ([]);
+
+    const addToCart = (product) => {
+        console.log('Agregando')
+        setCart([...cart, product]);
+    }
 
     return (
         <Card style={{ width: '20rem' }} key={userDetail.id}>
@@ -21,7 +29,9 @@ const ItemDetail = ({ userDetail }) => {
                         <ItemCount />
                     </Col>
                     <Col>
-                        <Agregar />
+                        <Button onClick={() => addToCart()}>
+                            Agregar a carrito
+                        </Button>
                     </Col>
                 </Row>
             </Card.Body>
