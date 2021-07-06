@@ -1,24 +1,24 @@
 import React from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
 import Agregar from '../Agregar/Agregar';
-import Counter from '../Counter/Counter';
+import ItemCount from '../ItemCount/ItemCount';
 
-const ItemDetail = ({ users }) => {
+const ItemDetail = ({ userDetail }) => {
 
     return (
-        <Card key={users.id}>
-            <Card.Img variant="top" src={users.avatar_url} />
+        <Card style={{ width: '20rem' }} key={userDetail.id}>
+            <Card.Img variant="top" src={userDetail.avatar_url} />
             <Card.Body>
-                <Card.Title>{users.login}</Card.Title>
+                <Card.Title>{userDetail.login}</Card.Title>
                 <Card.Text>
-                    {users.node_id}
+                    {userDetail.node_id}
                 </Card.Text>
                 <Card.Text>
-                    $ {users.type}
+                    $ {userDetail.type}
                 </Card.Text>
                 <Row>
                     <Col>
-                        <Counter />
+                        <ItemCount />
                     </Col>
                     <Col>
                         <Agregar />

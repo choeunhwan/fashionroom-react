@@ -1,8 +1,12 @@
+import ItemListContainer from "../../components/ItemListContainer/ItemListContainer";
+import { Container } from 'react-bootstrap';
+
 function Home() {
     return (
-        <div>
+        <Container>
             <h1>Home</h1>
-        </div>
+            <ItemListContainer />
+        </Container>
     );
 }
 
