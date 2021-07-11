@@ -2,21 +2,21 @@ import React from 'react';
 import { Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Item = ({ users }) => {
+const Item = ({ itemDetail }) => {
     return (
-        <Card style={{ width: '16rem' }} key={users.id}>
-            <Card.Img variant="top" src={users.avatar_url} />
+        <Card style={{ width: '16rem' }} key={itemDetail.id}>
+            <Card.Img variant="top" src={itemDetail.avatar_url} />
             <Card.Body>
-                <Card.Title>{users.login}</Card.Title>
+                <Card.Title>{itemDetail.login}</Card.Title>
                 <Card.Text>
-                    {users.node_id}
+                    {itemDetail.node_id}
                 </Card.Text>
                 <Card.Text>
-                    $ {users.type}
+                    $ {itemDetail.type}
                 </Card.Text>
                 <Col>
                     <div>
-                        <Link className='btn btn-primary' to={`/productdetail/${users.id}`}>Ver producto</Link>
+                        <Link className='btn btn-primary' to={`/productdetail/${itemDetail.id}`}>Ver producto</Link>
                     </div>
                 </Col>
             </Card.Body>

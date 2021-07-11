@@ -1,15 +1,24 @@
-import React from 'react';
-import { Container } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Container, Row } from 'react-bootstrap';
 import ItemList from './ItemList/ItemList.js';
+import { ItemsContext } from '../../context/ItemsContext';
 
 
-function ItemListContainer() {
+const ItemListContainer = () => {
+
+    const [items] = useContext(ItemsContext);
 
     return (
         <div>
             <Container className="mt-4">
                 <h1>ItemListContainer</h1>
-                <ItemList />
+                <Row md={4}>
+                    {items.map((item) => {
+                        return (
+                            <ItemList itemList={item} />
+                        )
+                    })};
+                </Row>
             </Container>
         </div>
     );

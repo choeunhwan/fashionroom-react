@@ -3,18 +3,18 @@ import axios from 'axios';
 import ItemDetailContainer from '../../components/ItemDetailContainer/ItemDetailContainer';
 
 function ProductDetail({ match }) {
-    let userID = match.params.id;
-    const [user, setUsers] = useState([]);
+    let itemID = match.params.id;
+    const [items, setItems] = useState([]);
     useEffect(() => {
-        axios(`https://api.github.com/users/${userID}`).then((res) =>
-            setUsers(res.data)
+        axios(`https://api.github.com/users/${itemID}`).then((res) =>
+            setItems(res.data)
         );
-    }, [userID]);
+    }, [itemID]);
     console.log(match)
 
     return (
         <div>
-            <ItemDetailContainer users={user} />
+            <ItemDetailContainer itemData={items} />
         </div>
     );
 }

@@ -1,31 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import { Container } from 'react-bootstrap';
 import ItemDetail from './ItemDetail/ItemDetail.js';
 
-function ItemDetailContainer() {
-
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        axios('https://api.github.com/users').then((res) => {
-            setUsers(res.data);
-        });
-    }, []);
+const ItemDetailContainer = ({ itemData }) => {
 
     return (
         <div>
-            {users.map((user) => {
-                console.log('id', user.id);
-                return (
-                    <Container className="mt-4">
-                        <h1>Detalle de Item</h1>
-                        <div key={user.id}>
-                            <ItemDetail users={user} />
-                        </div>
-                    </Container>
-                );
-            })}
+            <Container className="mt-4">
+                <h1>{itemData.node_id}</h1>
+                <ItemDetail itemDataDetail={itemData}/>
+            </Container>
         </div>
     );
 }

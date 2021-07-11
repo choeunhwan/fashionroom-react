@@ -1,8 +1,10 @@
+import { Container } from 'react-bootstrap';
+
 function Cart() {
     return (
-        <div>
+        <Container>
             <h1>Carrito de Compra</h1>
-        </div>
+        </Container>
     );
 }
 
