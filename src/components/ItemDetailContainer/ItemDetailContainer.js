@@ -8,7 +8,7 @@ const ItemDetailContainer = ({ itemData }) => {
         <div>
             <Container className="mt-4">
                 <h1>{itemData.node_id}</h1>
-                <ItemDetail itemDataDetail={itemData}/>
+                <ItemDetail item={itemData}/>
             </Container>
         </div>
     );

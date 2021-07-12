@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Col, Container, Row, Form } from 'react-bootstrap';
 import './ItemCount.css';
 
-const ItemCount = () => {
+const ItemCount = ({ stocks, initial, onAdd }) => {
 
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(initial);
   const [message, setMessage] = useState("");
 
   const handleCounterUp = () => {
-    if (count < 10) {
+    if (count < stocks) {
       setCount(count + 1);
       setMessage(null);
     } else {
@@ -17,7 +17,7 @@ const ItemCount = () => {
   }
 
   const handleCounterDown = () => {
-    if (count > 1) {
+    if (count > initial) {
       setCount(count - 1);
       setMessage(null);
     } else {
@@ -25,12 +25,14 @@ const ItemCount = () => {
     }
   }
 
+  onAdd(count)
+
   return (
     <div>
       <Container>
         <Row className="justify-content-md-center">
           <Col md="0">
-            <button className='buttonStyle-plus' primary onClick={handleCounterUp}>+</button>
+            <button className='buttonStyle-plus' primary onClick={handleCounterUp} disabled={count === initial}>+</button>
           </Col>
 
           <Col md="0">
@@ -40,9 +42,10 @@ const ItemCount = () => {
           </Col>
 
           <Col md="0">
-            <button className='buttonStyle-minus' secondary onClick={handleCounterDown}>-</button>
+            <button className='buttonStyle-minus' secondary onClick={handleCounterDown} disabled={count === stocks}>-</button>
           </Col>
         </Row>
+        <p>Unidades Disponibles: {stocks - count}</p>
         <Form.Text className='text-danger'>{message}</Form.Text>
       </Container>
     </div>

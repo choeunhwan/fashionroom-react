@@ -1,28 +1,48 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Row, Col, Button } from 'react-bootstrap';
-// import Agregar from '../Agregar/Agregar';
+import { Link } from 'react-router-dom'
 import ItemCount from '../ItemCount/ItemCount';
+import useCartContext from '../../../context/CartContext';
 
-const ItemDetail = ({ itemDataDetail }) => {
+const ItemDetail = ({ item }) => {
+
+    const stocks = item.stock
+    const initial = 1
+    const [add, setAdd] = useState(false)
+    const [quantity, setQuantity] = useState(1)
+    const { addItem } = useCartContext()
+
+    const itemQuantity = (count) => {
+        setQuantity(count)
+    }
+
+    const addToCart = () => {
+        addItem(item, quantity)
+        setAdd(true)
+    }
+
     return (
-        <Card style={{ width: '20rem' }} key={itemDataDetail.id}>
-            <Card.Img variant="top" src={itemDataDetail.avatar_url} />
+        <Card style={{ width: '20rem' }} key={item.id}>
+            <Card.Img variant="top" src={item.avatar_url} />
             <Card.Body>
-                <Card.Title>{itemDataDetail.login}</Card.Title>
+                <Card.Title>{item.login}</Card.Title>
                 <Card.Text>
-                    {itemDataDetail.node_id}
+                    {item.node_id}
                 </Card.Text>
                 <Card.Text>
-                    $ {itemDataDetail.type}
+                    $ {item.type}
                 </Card.Text>
                 <Row>
                     <Col>
-                        <ItemCount />
+                        <ItemCount stocks={stocks}
+                            initial={initial}
+                            onAdd={itemQuantity} />
                     </Col>
                     <Col>
-                        <Button>
-                            Comprar
+                        <Button onClick={addToCart}>
+                            Agregar Carrito
                         </Button>
+                        {add ? <Link to= {'/cart'}><Button>Comprar</Button></Link> : null}
                     </Col>
                 </Row>
             </Card.Body>
