@@ -6,20 +6,20 @@ import useCartContext from '../../../context/CartContext';
 
 const ItemDetail = ({ item }) => {
 
-    const stocks = item.stock
-    const initial = 1
-    const [add, setAdd] = useState(false)
-    const [quantity, setQuantity] = useState(1)
-    const { addItem } = useCartContext()
+    // const stocks = item.stock
+    // const initial = 1
+    // const [add, setAdd] = useState(false)
+    // const [quantity, setQuantity] = useState(1)
+    // const { addItem } = useCartContext()
 
-    const itemQuantity = (count) => {
-        setQuantity(count)
-    }
+    // const itemQuantity = (count) => {
+    //     setQuantity(count)
+    // }
 
-    const addToCart = () => {
-        addItem(item, quantity)
-        setAdd(true)
-    }
+    // const addToCart = () => {
+    //     addItem(item, quantity)
+    //     setAdd(true)
+    // }
 
     return (
         <Card style={{ width: '20rem' }} key={item.id}>
@@ -34,15 +34,15 @@ const ItemDetail = ({ item }) => {
                 </Card.Text>
                 <Row>
                     <Col>
-                        <ItemCount stocks={stocks}
+                        {/* <ItemCount stocks={stocks}
                             initial={initial}
-                            onAdd={itemQuantity} />
+                            onAdd={itemQuantity} /> */}
                     </Col>
                     <Col>
-                        <Button onClick={addToCart}>
+                        {/* <Button onClick={addToCart}>
                             Agregar Carrito
-                        </Button>
-                        {add ? <Link to= {'/cart'}><Button>Comprar</Button></Link> : null}
+                        </Button> */}
+                        {/* {add ? <Link to= {'/cart'}><Button>Comprar</Button></Link> : null} */}
                     </Col>
                 </Row>
             </Card.Body>
