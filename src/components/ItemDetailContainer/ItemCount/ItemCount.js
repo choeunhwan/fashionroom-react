@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Col, Container, Row, Form } from 'react-bootstrap';
 import './ItemCount.css';
 
-const ItemCount = ({ stocks, initial, onAdd }) => {
+const ItemCount = ({ stocks, initial}) => {
 
   const [count, setCount] = useState(initial);
   const [message, setMessage] = useState("");
@@ -24,8 +24,6 @@ const ItemCount = ({ stocks, initial, onAdd }) => {
       setMessage("Minima compra 1");
     }
   }
-
-  onAdd(count)
 
   return (
     <div>

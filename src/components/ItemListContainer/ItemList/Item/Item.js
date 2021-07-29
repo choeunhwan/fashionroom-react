@@ -5,14 +5,14 @@ import { Link } from 'react-router-dom';
 const Item = ({ itemDetail }) => {
     return (
         <Card style={{ width: '16rem' }} key={itemDetail.id}>
-            <Card.Img variant="top" src={itemDetail.avatar_url} />
+            <Card.Img variant="top" src={itemDetail.imageid} />
             <Card.Body>
-                <Card.Title>{itemDetail.login}</Card.Title>
+                <Card.Title>{itemDetail.title}</Card.Title>
                 <Card.Text>
-                    {itemDetail.node_id}
+                    {itemDetail.description}
                 </Card.Text>
                 <Card.Text>
-                    $ {itemDetail.type}
+                    $ {itemDetail.price}
                 </Card.Text>
                 <Col>
                     <div>

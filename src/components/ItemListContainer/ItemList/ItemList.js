@@ -7,7 +7,9 @@ const ItemList = ({ itemList }) => {
 
     return (
         <Container>
-            <Item itemDetail={itemList} />
+            <div className="my-2">
+                <Item itemDetail={itemList} />
+            </div>
         </Container>
     )
 }

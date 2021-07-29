@@ -9,7 +9,6 @@ class HeaderNavbar extends Component {
         return (
             <div>
                 <header>
-
                     <Navbar bg="dark" variant="dark" sticky="top">
                         <Link to="/" className="navbar-brand">
                             <img
@@ -43,7 +42,6 @@ class HeaderNavbar extends Component {
                             </Form>
                         </Navbar.Collapse>
                     </Navbar>
-
                 </header>
             </div>
         );
