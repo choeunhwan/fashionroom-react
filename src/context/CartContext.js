@@ -1,7 +1,7 @@
-import React, { createContext, useState, useContext } from 'react'
+import React, { createContext, useState } from 'react'
 
-const itemContext = createContext()
-const useCartContext = () => useContext(itemContext)
+export const itemContext = createContext()
+// export const CartContext = () => useContext(itemContext)
 
 export const ItemsProvider = ({ children }) => {
 
@@ -9,6 +9,7 @@ export const ItemsProvider = ({ children }) => {
     const [isInCart, setIsInCart] = useState(false)
 
     const addItem = (item, quantity) => {
+        // console.log(item, quantity, "item, quantity");
         const inCartList = items.find((i) => i.id === item.id)
         setIsInCart(true)
         if (inCartList) {
@@ -18,6 +19,7 @@ export const ItemsProvider = ({ children }) => {
             setItems([...items, { ...item, quantity }])
         }
     }
+    console.log(items, 'Mostrar cantidad producto');
 
     const removeItem = (id) => {
         items.splice(
@@ -37,17 +39,17 @@ export const ItemsProvider = ({ children }) => {
         return items.reduce((add, i) => (add += i.quantity), 0)
     }
 
-    const clean = () => {
+    const cleanListCart = () => {
         setItems([])
     }
 
-
     return (
         <itemContext.Provider
-            value={{ items, addItem, removeItem, totalitemsPrice, isInCart, cartWidgetCount, clean }}>
+            value={{ items, addItem, removeItem, totalitemsPrice, isInCart, cartWidgetCount, cleanListCart }}>
             {children}
         </itemContext.Provider>
     )
 
 }
-export default useCartContext;
+
+export default itemContext;

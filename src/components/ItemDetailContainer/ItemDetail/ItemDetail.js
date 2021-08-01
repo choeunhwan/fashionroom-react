@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { Card, Row, Col, Button, Image } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Card, Row, Col } from 'react-bootstrap';
 import ItemCount from '../ItemCount/ItemCount';
-import useCartContext from '../../../context/CartContext';
 
 const ItemDetail = ({ item }) => {
 
@@ -14,16 +12,14 @@ const ItemDetail = ({ item }) => {
             <Col>
                 <Card className="p-4">
                     <h1>{item.title}</h1>
-                    <h2>{item.price}</h2>
+                    <h2>$ {item.price}</h2>
                     <p>{item.description}</p>
                     <Row>
                         <Col>
-                            <ItemCount />
-                        </Col>
-                        <Col>
-                            <Button>
-                                Agregar
-                            </Button>
+                            <ItemCount
+                            stock={item.stock}
+                            item={item}
+                            />
                         </Col>
                     </Row>
                 </Card>

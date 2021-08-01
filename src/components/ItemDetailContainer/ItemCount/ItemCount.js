@@ -1,53 +1,58 @@
-import React, { useState } from "react";
-import { Col, Container, Row, Form } from 'react-bootstrap';
+import React, { useContext, useState } from "react";
+import { Col, Container, Row, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 import './ItemCount.css';
+import itemContext from "../../../context/CartContext"
 
-const ItemCount = ({ stocks, initial}) => {
+const ItemCount = ({ item, stock }) => {
+    const [counter, setCounter] = useState(0);
+    const { addItem } = useContext(itemContext);
+    const [add, setAdd] = useState(false)
+    // console.log (addItem);
 
-  const [count, setCount] = useState(initial);
-  const [message, setMessage] = useState("");
+    const handleCounterUp = () => {
+        counter < stock ? setCounter(counter + 1) : console.log("Stock máximo");
+    };
 
-  const handleCounterUp = () => {
-    if (count < stocks) {
-      setCount(count + 1);
-      setMessage(null);
-    } else {
-      setMessage("Limite de stock 10");
+    const handleCounterDown = () => {
+        counter > 0 ? setCounter(counter - 1) : console.log("Stock mínimo");
+    };
+
+    const onAdd = (quantity) => {
+        // console.log (quantity);
+        addItem(item, quantity)
+        setAdd(true)
     }
-  }
 
-  const handleCounterDown = () => {
-    if (count > initial) {
-      setCount(count - 1);
-      setMessage(null);
-    } else {
-      setMessage("Minima compra 1");
-    }
-  }
+    return (
+        <div>
+            <Container>
+                <Row>
+                    <Col md="0">
+                        <button className='buttonStyle-plus' primary onClick={handleCounterUp}>+</button>
+                    </Col>
 
-  return (
-    <div>
-      <Container>
-        <Row className="justify-content-md-center">
-          <Col md="0">
-            <button className='buttonStyle-plus' primary onClick={handleCounterUp} disabled={count === initial}>+</button>
-          </Col>
+                    <Col md="0">
+                        <div className='inputStyle'>
+                            <span>{counter}</span>
+                        </div>
+                    </Col>
 
-          <Col md="0">
-            <div className='inputStyle'>
-              <span>{count}</span>
-            </div>
-          </Col>
-
-          <Col md="0">
-            <button className='buttonStyle-minus' secondary onClick={handleCounterDown} disabled={count === stocks}>-</button>
-          </Col>
-        </Row>
-        <p>Unidades Disponibles: {stocks - count}</p>
-        <Form.Text className='text-danger'>{message}</Form.Text>
-      </Container>
-    </div>
-  )
+                    <Col md="0">
+                        <button className='buttonStyle-minus' secondary onClick={handleCounterDown}>-</button>
+                    </Col>
+                    <Col>
+                        <Button onClick={() => onAdd(counter)}>
+                            Agregar Item
+                        </Button>
+                    </Col>
+                    <Col>
+                        {add ? <Link to={'/cart'}><Button>Comprar Ahora</Button></Link> : null}
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    )
 }
 
 export default ItemCount;
