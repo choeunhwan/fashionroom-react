@@ -1,8 +1,18 @@
 import React, { useState } from 'react'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+import { db } from '../../firebase';
 
-const Formulario = ({ addOrEdit }) => {
+const Formulario = () => {
+
+    const addOrderData = async (order) => {
+        console.log(order);
+        await db.collection('order').doc().set(order);
+        console.log('Nuevo Order Agregado!');
+        const newOrder = { date: db().firestore.Timestamp.fromDate(new Date())};
+        console.log(newOrder);
+    }
+
     const initialState = {
         nombre: ' ',
         apellido: ' ',
@@ -19,9 +29,9 @@ const Formulario = ({ addOrEdit }) => {
     };
 
     const handleOnSubmit = (e) => {
-        // console.log(values);
+        console.log(values);
         e.preventDefault();
-        addOrEdit();
+        addOrderData(values);
     };
 
     return (

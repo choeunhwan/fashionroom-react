@@ -3,13 +3,8 @@ import { Container, Col, Row, Card, ListGroup, Button, Alert } from 'react-boots
 import CartList from '../../components/CartList/CartList';
 import itemContext from '../../context/CartContext';
 import { Link } from 'react-router-dom';
-import { db } from '../../firebase';
 
 const Cart = () => {
-    const addOrEdit = () => {
-        console.log('nuevo ORDER agregado');
-    }
-
     const { items, totalitemsPrice } = useContext(itemContext);
 
     return (
@@ -53,7 +48,7 @@ const Cart = () => {
                                         </>
                                         :
                                         <>
-                                            <Link to="/checkout" addOrEdit={addOrEdit}>
+                                            <Link to="/checkout">
                                                 <Button disabled>Checkout</Button>
                                             </Link>
                                         </>
