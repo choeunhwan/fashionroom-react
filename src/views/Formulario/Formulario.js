@@ -1,22 +1,68 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
-const Formulario = () => {
+const Formulario = ({ addOrEdit }) => {
+    const initialState = {
+        nombre: ' ',
+        apellido: ' ',
+        telefono: ' ',
+        email: ' ',
+    };
+
+    const [values, setValues] = useState(initialState);
+
+    const handleOnChange = (e) => {
+        const { name, value } = e.target;
+        console.log(name, value);
+        setValues({ ...values, [name]: value })
+    };
+
+    const handleOnSubmit = (e) => {
+        // console.log(values);
+        e.preventDefault();
+        addOrEdit();
+    };
+
     return (
         <Container className='mt-4'>
-            <Form>
+            <Form onSubmit={handleOnSubmit}>
                 <h1>Finalizar compra</h1>
                 <Row className='mt-4'>
-                    <Col>
-                        <Form.Control type="name" placeholder="Nombre" required />
+                    <Col>Nombre
+                        <Form.Control
+                            onChange={handleOnChange}
+                            type='text'
+                            name='nombre'
+                            placeholder="Nombre"
+                            value={values.nombre}
+                        />
                     </Col>
-                    <Col>
-                        <Form.Control type="name" placeholder="Apellido" required />
+                    <Col>Apellido
+                        <Form.Control
+                            onChange={handleOnChange}
+                            type='text'
+                            name='apellido'
+                            placeholder="Apellido"
+                            value={values.apellido}
+                        />
                     </Col>
                 </Row>
-                <Form.Control className='my-4' type="phone" placeholder="Telefono" required />
-                <Form.Control className='my-4' type="email" placeholder="Escriba el email" required />
+                <Form.Control
+                    className='my-4'
+                    onChange={handleOnChange}
+                    type='number'
+                    name='telefono'
+                    placeholder="Telefono"
+                    value={values.telefono}
+                />
+                <Form.Control
+                    className='my-4'
+                    onChange={handleOnChange}
+                    type='email' name='email'
+                    placeholder="Escriba el email"
+                    value={values.email}
+                />
                 <Row>
                     <Col>
                         <Link to={'/cart'}>

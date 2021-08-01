@@ -1,10 +1,15 @@
 import { useContext } from 'react';
 import { Container, Col, Row, Card, ListGroup, Button, Alert } from 'react-bootstrap';
 import CartList from '../../components/CartList/CartList';
-import itemContext from '../../context/CartContext'
-import { Link } from 'react-router-dom'
+import itemContext from '../../context/CartContext';
+import { Link } from 'react-router-dom';
+import { db } from '../../firebase';
 
 const Cart = () => {
+    const addOrEdit = () => {
+        console.log('nuevo ORDER agregado');
+    }
+
     const { items, totalitemsPrice } = useContext(itemContext);
 
     return (
@@ -37,10 +42,22 @@ const Cart = () => {
                             </ListGroup>
                             <Card.Body>
                                 <Card.Title>Total</Card.Title>
-                                <h2>$ {totalitemsPrice(items)}</h2>
-                                <Link to="/checkout">
-                                    <Button>Checkout</Button>
-                                </Link>
+                                {
+                                    items.length > 0
+                                        ?
+                                        <>
+                                            <h2>$ {totalitemsPrice(items)}</h2>
+                                            <Link to="/checkout">
+                                                <Button>Checkout</Button>
+                                            </Link>
+                                        </>
+                                        :
+                                        <>
+                                            <Link to="/checkout" addOrEdit={addOrEdit}>
+                                                <Button disabled>Checkout</Button>
+                                            </Link>
+                                        </>
+                                }
                             </Card.Body>
                         </Card>
                     </Col>
