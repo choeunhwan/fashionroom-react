@@ -1,5 +1,5 @@
-import React, { Component, useContext } from 'react';
-import { Navbar, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { Navbar, Nav, Form, FormControl } from 'react-bootstrap';
 import Fashionroom from './logo_white.svg';
 import HeaderSearchButton from './HeaderSearchButton';
 import itemContext from '../../context/CartContext'
@@ -27,14 +27,9 @@ function HeaderNavbar() {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
                             <Link to="/" className="nav-link">Inicio</Link>
-                            <Link to="/brands" className="nav-link">Marcas</Link>
-                            <NavDropdown title="Catalogo" id="basic-nav-dropdown">
-                                <Link to="/productlist" className="dropdown-item">Mujer</Link>
-                                <Link to="/productlist" className="dropdown-item">Hombre</Link>
-                                <Link to="/productlist" className="dropdown-item">Accesorios</Link>
-                                <Link to="/productlist" className="dropdown-item">Calzados</Link>
-                            </NavDropdown>
-                            <Link to="/contact" className="nav-link">Contacto</Link>
+                            <Link to="/productlist" className="nav-link">Ropa de Moda</Link>
+                            <Link to="/productlist" className="nav-link">Accesorios</Link>
+                            <Link to="/productlist" className="nav-link">Calzados</Link>
                         </Nav>
                         <Form inline>
                             <FormControl type="text" placeholder="Buscar..." className="mr-sm-2" />

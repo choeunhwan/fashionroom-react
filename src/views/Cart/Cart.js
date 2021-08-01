@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Container, Col, Row, Card, ListGroup, Button, Alert } from 'react-bootstrap';
 import CartList from '../../components/CartList/CartList';
 import itemContext from '../../context/CartContext'
 import { Link } from 'react-router-dom'
 
-const Cart = ({ getTotal }) => {
+const Cart = () => {
     const { items, totalitemsPrice } = useContext(itemContext);
 
     return (
@@ -38,7 +38,9 @@ const Cart = ({ getTotal }) => {
                             <Card.Body>
                                 <Card.Title>Total</Card.Title>
                                 <h2>$ {totalitemsPrice(items)}</h2>
-                                <Button>Checkout</Button>
+                                <Link to="/checkout">
+                                    <Button>Checkout</Button>
+                                </Link>
                             </Card.Body>
                         </Card>
                     </Col>
