@@ -23,18 +23,15 @@ const ItemListContainer = () => {
 
     return (
         <div>
-            <Container className="mt-4">
-                <h1>Listado de productos</h1>
-                <div className="mt-4">
-                    <Row md={4}>
-                        {product.map((document) => {
-                            return (
-                                <ItemList itemList={document} />
-                            )
-                        })}
-                    </Row>
-                </div>
-            </Container>
+            <div className="mt-4">
+                <Row md={4}>
+                    {product.map((document) => {
+                        return (
+                            <ItemList itemList={document} />
+                        )
+                    })}
+                </Row>
+            </div>
         </div>
     );
 }

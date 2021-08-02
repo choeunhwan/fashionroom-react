@@ -1,16 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import { db } from '../../firebase';
+import itemContext from '../../context/CartContext';
+import '@firebase/firestore';
 
 const Formulario = () => {
 
-    const addOrderData = async (order) => {
-        console.log(order);
-        await db.collection('order').doc().set(order);
+    //Items//
+    const { items, totalitemsPrice } = useContext(itemContext);
+    const [cartItems, setCartItems] = useState([]);
+
+    const getItems = function (data) {
+        setCartItems(data);
+    }
+
+    useEffect(() => {
+        getItems(items);
+    }, [items]);
+
+    //Order in firebase//
+    const addOrderData = async (buyer) => {
+
+        console.log(buyer);
+        await db.collection('order').doc().set(buyer);
         console.log('Nuevo Order Agregado!');
-        const newOrder = { date: db().firestore.Timestamp.fromDate(new Date())};
-        console.log(newOrder);
+        // const newOrder = { date: db().firestore.Timestamp.fromDate(new Date())};
+        // const newOrder = {
+        //     buyer,
+        //     products,
+        //     total: totalitemsPrice()
+        // }
+        // console.log(newOrder, 'buyer&items');
     }
 
     const initialState = {
@@ -18,13 +39,15 @@ const Formulario = () => {
         apellido: ' ',
         telefono: ' ',
         email: ' ',
+        products: [{ items }],
+        total: totalitemsPrice(),
     };
 
     const [values, setValues] = useState(initialState);
 
     const handleOnChange = (e) => {
         const { name, value } = e.target;
-        console.log(name, value);
+        console.log(value);
         setValues({ ...values, [name]: value })
     };
 
@@ -34,9 +57,16 @@ const Formulario = () => {
         addOrderData(values);
     };
 
+    const disabled = !(
+        values.email.length &&
+        values.nombre.length &&
+        values.apellido.length &&
+        values.telefono.length > 0
+    )
+
     return (
         <Container className='mt-4'>
-            <Form onSubmit={handleOnSubmit}>
+            <Form>
                 <h1>Finalizar compra</h1>
                 <Row className='mt-4'>
                     <Col>Nombre
@@ -82,13 +112,15 @@ const Formulario = () => {
                         </Link>
                     </Col>
                     <Col>
-                        <Button className="float-right" variant="primary" type="submit">
-                            Finalizar compra
-                        </Button>
+                        <Link to={'/cart'}>
+                            <Button disabled={disabled} onClick={handleOnSubmit} className="float-right" variant="primary" type="submit">
+                                Finalizar compra
+                            </Button>
+                        </Link>
                     </Col>
                 </Row>
             </Form>
-        </Container>
+        </Container >
     )
 }
 

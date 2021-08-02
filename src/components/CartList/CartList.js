@@ -4,7 +4,7 @@ import { Table, Button } from 'react-bootstrap';
 
 const CartList = () => {
     const { items, removeItem, cleanListCart } = useContext(itemContext);
-    const [cartItems, setCartItems] = useState([]);
+    const [ cartItems, setCartItems ] = useState([]);
 
     // Listado de Productos // 
     const getItems = function (data) {
