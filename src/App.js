@@ -1,18 +1,39 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
-import Header_navbar from './components/Header_navbar/Header_navbar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-class App extends Component {
-  render() {
-    return (
-      <div className='App'>
-        <Header_navbar />
-        <ItemListContainer title={'Calzado'}/>
-        <ItemListContainer title={'Sweater'}/>
-        <ItemListContainer title={'Accesorios'}/>
-      </div>
-    );
-  }
+
+// Componentes
+import HeaderNavbar from './components/HeaderNavbar/HeaderNavbar';
+
+// Views Links
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './views/Home/Home';
+import ProductList from './views/ProductList/ProductList';
+import Cart from './views/Cart/Cart';
+import Formulario from './views/Formulario/Formulario';
+import ProductDetail from './views/ProductDetail/ProductDetail';
+
+// Provider
+import { ItemsProvider } from './context/CartContext';
+import Footer from './components/Footer/Footer';
+
+function App() {
+  return (
+    <Router>
+      <ItemsProvider>
+        <div className='App'>
+          <HeaderNavbar />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/productlist" exact component={ProductList} />
+            <Route path="/cart" exact component={Cart} />
+            <Route path="/checkout" exact component={Formulario} />
+            <Route path="/productdetail/:productId" exact component={ProductDetail} />
+          </Switch>
+          <Footer />
+        </div>
+      </ItemsProvider>
+    </Router>
+  );
 }
 
 export default App;

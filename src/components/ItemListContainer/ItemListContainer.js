@@ -1,25 +1,39 @@
-import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Button } from 'react-bootstrap';
-import img from './example.jpg';
+import React, { useEffect, useState } from 'react';
+import { Container, Row } from 'react-bootstrap';
+import ItemList from './ItemList/ItemList.js';
+import { db } from '../../firebase';
 
-function ItemListContainer(props) {
+const ItemListContainer = () => {
+
+    const [product, setProduct] = useState([])
+
+    const getItems = () => {
+        db.collection('items').onSnapshot((querySnapshot) => {
+            const docs = [];
+            querySnapshot.forEach((doc) => {
+                docs.push({ ...doc.data(), id: doc.id })
+            });
+            setProduct(docs);
+        });
+    }
+
+    useEffect(() => {
+        getItems();
+    }, [])
+
     return (
         <div>
-
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={img} />
-                <Card.Body>
-                    <Card.Title>{props.title}</Card.Title>
-                    <Card.Text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    </Card.Text>
-                    <Button variant="primary">Comprar</Button>
-                </Card.Body>
-            </Card>
-
+            <div className="mt-4">
+                <Row md={4}>
+                    {product.map((document) => {
+                        return (
+                            <ItemList itemList={document} />
+                        )
+                    })}
+                </Row>
+            </div>
         </div>
-    )
+    );
 }
 
 export default ItemListContainer;
